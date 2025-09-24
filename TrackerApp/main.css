@@ -4,14 +4,15 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: Bahnschrift;
-  color: hsl(0, 0%, 82%);
+  color: hsl(0, 0%, 93%);
 }
 .header {
     display: flex;
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    background-color: #100747;
+    background-color: #1d1a31;
+    border: 1px solid #7872a2;
 }
 .sidebar-and-content {
     display: flex;
@@ -21,12 +22,12 @@ html, body {
 .sidebar {
     display:flex;
     flex-grow: 1;
-    background-color: #100747;
-    border: 1px solid hsl(0, 0%, 82%);
+    background-color: #1d1a31;
+    border: 1px solid #7872a2;
 }
 .main-content {
     display: flex;
     flex-grow: 4;
-    background-color: #140a5b;
-    border: 1px solid hsl(0, 0%, 82%);
+    background-color: #2e2851;
+    border: 1px solid #7872a2;
 }
