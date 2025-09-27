@@ -17,6 +17,6 @@ features:
 - week partitioning
     - >(periodically shows this certain thing happening every week from (weekday) to (weekday))
     
-points system (optional, dopamine hit))
+- points system (optional, dopamine hit)
 
 Languages: html-css-javascript
