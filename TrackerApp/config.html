@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GachaTrackerLOL</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class ="header">
+    <h1>Simple WebTracker App</h1>
+    <p>This app will utilize a date/time system to generate daily quotas.</p>
+    <h1 id="time-tracker"></h1>
+    </div>
+    <div class = "sidebar-and-content">
+        <div class = "sidebar">
+            <a href="index.html">Home</a>
+            <a href="#">Configuration</a>
+        </div>
+        <div class = "main-content">
+            <form>
+            <div>
+                <h2>Daily Configuration</h2>
+                <p>To add an item, enter the item name, and set time of daily reset.</p>
+            </div>
+            <div class = "daily-adder">
+                <input type="text" id="new-item" placeholder="Add item">
+                <input type="time" id="reset-time" value="00:00">
+                <button type="button" onclick="addDailyConfig()">Add Daily</button>
+            </div>
+            <hr>
+            <div>
+                <h2>Weekly Configuration</h2>
+                <p>To set a weekly configuration, enter the item name, then set the weekdays.</p>
+            </div>
+            <div class = "weekly-adder">
+                Name: <input type="text" id="new-weekly-item" placeholder="Add item">
+                <br>
+                <p>Every?</p>
+                <div id="weekday-checkboxes">
+                <label><input type="checkbox" name="weekday" value="0"> Sunday</label><br>
+                <label><input type="checkbox" name="weekday" value="1"> Monday</label><br>
+                <label><input type="checkbox" name="weekday" value="2"> Tuesday</label><br>
+                <label><input type="checkbox" name="weekday" value="3"> Wednesday</label><br>
+                <label><input type="checkbox" name="weekday" value="4"> Thursday</label><br>
+                <label><input type="checkbox" name="weekday" value="5"> Friday</label><br>
+                <label><input type="checkbox" name="weekday" value="6"> Saturday</label>
+            </div>
+            </div>
+            <div>
+                <ul id="item-list"></ul>
+                <button type="button" onclick="addWeeklyConfig()">Add Weekly</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
