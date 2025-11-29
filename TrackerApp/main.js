@@ -1,48 +1,49 @@
-const DB_KEY = "trackerDB";
+const DB_KEY = "trackerDB"; // a reference point for the API 'localStorage', which allows to save each item even if the website is closed.
 
-function updateTime() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString();
-    document.getElementById('time-tracker').textContent = timeString;
+function updateTime() { // this function will update the time set in the main webpage.
+    const now = new Date(); // now is set as a const variable. const variables basically do not change.
+    const timeString = now.toLocaleTimeString(); // timeString is set as constant. .toLocaleTimeString() gets the local time from your own settings.
+    document.getElementById('time-tracker').textContent = timeString; // looks for 'time-tracker' set in every ID.
 }
-setInterval(updateTime, 1000);
+setInterval(updateTime, 1000); // updates every 1 second (1000 in milliseconds).
 
-let items = [];
-let today = new Date().toLocaleDateString();
+let items = []; // set items as a let; let are variables that change over time. This is the main variable which holds the tasks that you have.
+let today = new Date().toLocaleDateString(); // today is set as a variable, which determines the present date.
 
-function loadItems() {
-    const saved = JSON.parse(localStorage.getItem(today)) || [];
-    items = saved;
-    renderItems();
-}
-
-function saveItems() {
-    localStorage.setItem(today, JSON.stringify(items));
+function loadItems() { // this function will allow to load the items. Items in the webtracker are the "tasks" that you do.
+    const saved = JSON.parse(localStorage.getItem(today)) || []; // saved is set as a constant. localStorage.getItem(today) looks for the browser's storage for any data stored under "today" JSON.parse converts the string back into an array. || [] is used if you haven't set an array. 
+    // basically, this piece of code above will load previous tasks that you loaded (from localStorage).
+    items = saved; // saves the current items from "saved", which saves the saved items (from previous days) to be saved into the present.
+    renderItems(); // loads the renderItems function, which updates the item-list (.html files)
 }
 
-function addItem() {
-    const input = document.getElementById('new-item');
-    if (input.value) {
-        items.push({ name: input.value, done: false });
-        input.value = '';
+function saveItems() { // this function is your current list of tasks set daily to be saved.
+    localStorage.setItem(today, JSON.stringify(items)); // This saves the items. JSON.stringify turns 'items' array into a string so it can be saved.
+}
+
+function addItem() { // this function will add new items to be added in the list.
+    const input = document.getElementById('new-item'); // gets the item named in the textbox to be added as "input".
+    if (input.value) { // if input has a value, do:
+        items.push({ name: input.value, done: false }); // adds the inputted item into the items array.
+        input.value = ''; // clears the textbox
         saveItems();
         renderItems();
     }
 }
 
-function deleteItem(index) {
+function deleteItem(index) { // this will delete the item from the list of dailies. [CURRENTLY NOT USED]
     items.splice(index, 1);
     saveItems();
     renderItems();
 }
 
-function confirmItems() {
+function confirmItems() { // this will set the items currently as done. [CURRENTLY NOT USED]
     items.forEach(item => item.done = true);
     saveItems();
     renderItems();
 }
 
-function renderItems() {
+function renderItems() { // renders the current items set.
     const list = document.getElementById('item-list');
     list.innerHTML = '';
     items.forEach((item, i) => {
@@ -54,7 +55,7 @@ function renderItems() {
     });
 }
 
-function toggleDone(index) {
+function toggleDone(index) { // toggles if the items are done.
     items[index].done = !items[index].done;
     saveItems();
     renderItems();
