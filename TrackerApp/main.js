@@ -1,4 +1,4 @@
-const DB_KEY = "trackerDB"; // <-- Move this to the top
+const DB_KEY = "trackerDB";
 
 function updateTime() {
     const now = new Date();
@@ -7,7 +7,6 @@ function updateTime() {
 }
 setInterval(updateTime, 1000);
 
-// main.js additions
 let items = [];
 let today = new Date().toLocaleDateString();
 
